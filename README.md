@@ -1,115 +1,142 @@
-# PointTrack.ID
+# 🚨 PointTrack.ID
 
-PointTrack.ID adalah sistem informasi pelanggaran tata tertib sekolah berbasis web yang dirancang untuk membantu sekolah dalam mencatat, memantau, dan mengelola pelanggaran siswa secara digital, cepat, dan terstruktur.
+> Sistem Informasi Pelanggaran Tata Tertib Sekolah Berbasis Web
 
-Sistem ini dibuat sebagai proyek pengembangan perangkat lunak oleh siswa jurusan Pengembangan Perangkat Lunak dan Gim (PPLG/RPL) di SMK ISFI Banjarmasin.
+PointTrack.ID adalah aplikasi berbasis web yang dirancang untuk membantu sekolah dalam mencatat, memantau, dan mengelola pelanggaran siswa secara **digital, cepat, dan terstruktur**.
 
----
-
-## 📌 Latar Belakang
-
-Banyak sekolah masih menggunakan sistem manual dalam pencatatan pelanggaran siswa menggunakan buku atau arsip kertas. Hal tersebut menimbulkan beberapa kendala seperti:
-
-- Risiko kehilangan data
-- Kesalahan pencatatan
-- Sulit menghitung total poin pelanggaran
-- Lambat dalam pembuatan laporan
-- Sulit memantau siswa secara real-time
-
-PointTrack.ID hadir sebagai solusi digital untuk mempermudah proses tersebut.
+Sistem ini dikembangkan sebagai proyek pembelajaran oleh siswa jurusan **Pengembangan Perangkat Lunak dan Gim (PPLG/RPL)** di **SMK ISFI Banjarmasin**.
 
 ---
 
-## 🎯 Tujuan Project
+## 📖 Tentang Project
 
-- Membuat sistem pelanggaran sekolah berbasis web yang mudah digunakan
-- Membantu guru dalam mencatat pelanggaran siswa
-- Menghitung poin pelanggaran secara otomatis
-- Menyediakan laporan pelanggaran per siswa maupun per kelas
-- Meningkatkan efisiensi administrasi sekolah
+Di banyak sekolah, pencatatan pelanggaran siswa masih dilakukan secara manual menggunakan buku atau arsip kertas. Cara tersebut sering menimbulkan kendala seperti:
 
----
+- Data mudah hilang atau rusak  
+- Kesalahan pencatatan  
+- Sulit menghitung total poin pelanggaran  
+- Proses laporan memakan waktu  
+- Sulit melakukan monitoring siswa secara real-time  
 
-## 🚀 Fitur Utama
-
-### 🔐 Autentikasi
-- Login pengguna
-- Logout
-- Hak akses berdasarkan role
-
-### 👨‍🏫 Role User
-
-#### Admin
-Memiliki akses penuh ke seluruh sistem, meliputi:
-
-- Kelola data siswa
-- Kelola data guru
-- Kelola data kelas
-- Kelola tahun pelajaran
-- Kelola jenis pelanggaran
-- Input data pelanggaran siswa
-- Monitoring seluruh data pelanggaran
-- Lihat riwayat pelanggaran siswa
-- Pantau total poin siswa
-- Export laporan PDF
-
-
-#### Guru
-Memiliki akses terbatas, hanya pada fitur:
-
-- Input pelanggaran siswa
-- Lihat riwayat pelanggaran siswa
-- Pantau total poin siswa
-- Export laporan PDF
-
-### 📊 Dashboard
-- Statistik jumlah siswa
-- Statistik pelanggaran
-- Rekap poin
-- Monitoring siswa bermasalah
-
-### 📄 Reporting
-- Cetak laporan PDF
-- Filter berdasarkan kelas
-- Filter berdasarkan tahun ajaran
-- Search siswa
+PointTrack.ID hadir sebagai solusi modern untuk mendigitalisasi sistem tata tertib sekolah.
 
 ---
 
-## 🛠️ Teknologi Yang Digunakan
+## 🎯 Tujuan Pengembangan
 
-### Frontend
-- HTML5
-- CSS3
-- Tailwind CSS
-- JavaScript
+Project ini dibuat dengan tujuan:
 
-### Backend
-- PHP Native
+- Membantu sekolah mengelola data pelanggaran siswa secara efisien  
+- Mempermudah guru dalam input pelanggaran  
+- Menghitung total poin otomatis  
+- Menyediakan laporan cepat dan akurat  
+- Meningkatkan kedisiplinan siswa melalui monitoring terstruktur  
 
-### Database
-- MySQL
+---
 
-### Tools
-- Visual Studio Code
-- Laragon
-- phpMyAdmin
-- Google Chrome / Microsoft Edge
+## ✨ Fitur Utama
+
+## 🔐 Sistem Login
+
+- Login user  
+- Logout  
+- Hak akses berdasarkan role pengguna  
+
+---
+
+## 👨‍🏫 Role Pengguna
+
+### 👑 Admin
+
+Memiliki akses penuh terhadap seluruh sistem:
+
+- Kelola data siswa  
+- Kelola data guru  
+- Kelola data kelas  
+- Kelola tahun pelajaran  
+- Kelola jenis pelanggaran  
+- Input pelanggaran siswa  
+- Monitoring seluruh data pelanggaran  
+- Riwayat pelanggaran siswa  
+- Pantau total poin siswa  
+- Export laporan PDF  
+
+---
+
+### 👨‍💼 Guru
+
+Memiliki akses terbatas pada fitur berikut:
+
+- Input pelanggaran siswa  
+- Lihat riwayat pelanggaran  
+- Pantau total poin siswa  
+- Export laporan PDF  
+
+---
+
+## 📊 Dashboard
+
+Menampilkan informasi ringkas dan statistik sistem:
+
+- Total siswa  
+- Total pelanggaran  
+- Rekap poin siswa  
+- Siswa dengan poin tertinggi  
+- Monitoring pelanggaran terbaru  
+
+---
+
+## 📄 Reporting
+
+Fitur laporan yang memudahkan administrasi sekolah:
+
+- Cetak laporan PDF  
+- Filter berdasarkan kelas  
+- Filter berdasarkan tahun pelajaran  
+- Search data siswa  
+- Rekap data pelanggaran  
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+### 🎨 Frontend
+
+- HTML5  
+- CSS3  
+- Tailwind CSS  
+- JavaScript  
+
+### ⚙️ Backend
+
+- PHP Native  
+
+### 🗄️ Database
+
+- MySQL  
+
+### 🔧 Tools Development
+
+- Visual Studio Code  
+- Laragon  
+- phpMyAdmin  
+- Google Chrome / Microsoft Edge  
 
 ---
 
 ## 🗂️ Struktur Database
 
-Beberapa tabel utama:
+Beberapa tabel utama yang digunakan:
 
-- users
-- siswa
-- guru
-- kelas
-- tahun_pelajaran
-- jenis_pelanggaran
-- pelanggaran
-- riwayat_kelas
+```sql
+users
+siswa
+guru
+kelas
+tahun_pelajaran
+jenis_pelanggaran
+pelanggaran
+riwayat_kelas
 
 ---
 
