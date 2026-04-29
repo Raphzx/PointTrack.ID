@@ -36,7 +36,7 @@ Project ini dibuat dengan tujuan:
 
 ## ✨ Fitur Utama
 
-## 🔐 Sistem Login
+### 🔐 Sistem Login
 
 - Login user  
 - Logout  
@@ -60,8 +60,6 @@ Memiliki akses penuh terhadap seluruh sistem:
 - Riwayat pelanggaran siswa  
 - Pantau total poin siswa  
 - Export laporan PDF  
-
----
 
 ### 👨‍💼 Guru
 
@@ -138,9 +136,9 @@ jenis_pelanggaran
 pelanggaran
 riwayat_kelas
 
----
-
 ## ⚙️ Cara Menjalankan Project
+
+Ikuti langkah berikut untuk menjalankan PointTrack.ID di komputer lokal.
 
 ### 1. Clone Repository
 
