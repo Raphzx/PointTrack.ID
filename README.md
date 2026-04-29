@@ -40,18 +40,27 @@ PointTrack.ID hadir sebagai solusi digital untuk mempermudah proses tersebut.
 ### 👨‍🏫 Role User
 
 #### Admin
+Memiliki akses penuh ke seluruh sistem, meliputi:
+
 - Kelola data siswa
 - Kelola data guru
 - Kelola data kelas
 - Kelola tahun pelajaran
 - Kelola jenis pelanggaran
+- Input data pelanggaran siswa
 - Monitoring seluruh data pelanggaran
-- Export laporan PDF / Excel
+- Lihat riwayat pelanggaran siswa
+- Pantau total poin siswa
+- Export laporan PDF
+
 
 #### Guru
+Memiliki akses terbatas, hanya pada fitur:
+
 - Input pelanggaran siswa
-- Lihat riwayat pelanggaran
+- Lihat riwayat pelanggaran siswa
 - Pantau total poin siswa
+- Export laporan PDF
 
 ### 📊 Dashboard
 - Statistik jumlah siswa
@@ -83,7 +92,7 @@ PointTrack.ID hadir sebagai solusi digital untuk mempermudah proses tersebut.
 
 ### Tools
 - Visual Studio Code
-- Laragon / XAMPP
+- Laragon
 - phpMyAdmin
 - Google Chrome / Microsoft Edge
 
