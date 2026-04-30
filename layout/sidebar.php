@@ -3,10 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $page = $_GET['page'] ?? 'dashboard';
-function active($p, $page) {
-  return $p === $page
-    ? 'bg-slate-200 text-slate-900 font-semibold'
-    : 'hover:bg-slate-200';
+function active(string $p, string $page): string {
+    return $p === $page
+        ? 'bg-slate-200 text-slate-900 font-semibold'
+        : 'hover:bg-slate-200';
 }
 $role = $_SESSION['user_role'] ?? 'guru';
 ?>
@@ -104,7 +104,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
             />
             <circle cx="12" cy="11" r="3" />
           </svg>
-          <span x-show="open">Admin</span>
+          <span x-show="open">Data Master</span>
         </div>
         <svg
           x-show="open"
@@ -251,7 +251,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
               d="M21 10v4"
             />
           </svg>
-          <span x-show="open">Guru</span>
+          <span x-show="open">Laporan</span>
         </div>
         <svg
           x-show="open"
