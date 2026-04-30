@@ -86,7 +86,7 @@ function statusText($p){
 <head>
   <meta charset="UTF-8">
   <title>Cek Pelanggaran | Sistem Pelanggaran</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <style>
@@ -106,9 +106,110 @@ function statusText($p){
 
     @keyframes modalSlide { from { opacity: 0; transform: translateY(50px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .modal-enter { animation: modalSlide 0.5s ease-out forwards; }
+    
+    body {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 100vh !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+    }
+    
+    .w-full.max-w-md {
+      max-width: 32rem !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    
+    @media (min-width: 1024px) {
+      .glass {
+        padding: 2.5rem !important;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 1280px) {
+      body {
+        padding: 1.5rem !important;
+      }
+      .w-full.max-w-md {
+        max-width: 30rem !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      body {
+        padding: 2rem !important;
+      }
+      .w-full.max-w-md {
+        max-width: 34rem !important;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 0.75rem !important;
+      }
+      .glass {
+        padding: 1.5rem !important;
+      }
+    }
+    
+    .fixed.top-6.right-6 {
+      position: fixed !important;
+      top: 1.5rem !important;
+      right: 1.5rem !important;
+      z-index: 50 !important;
+    }
+    
+    .fixed.inset-0 {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 1rem !important;
+    }
+    
+    .modal-container {
+      max-width: 56rem !important;
+      width: 100% !important;
+      max-height: 85vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    
+    .modal-body-scroll {
+      flex: 1 !important;
+      overflow-y: auto !important;
+      min-height: 0 !important;
+    }
+    
+    .modal-footer {
+      flex-shrink: 0 !important;
+    }
+    
+    @media (min-width: 768px) {
+      .modal-container {
+        width: 85% !important;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .modal-container {
+        width: 80% !important;
+        max-width: 60rem !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .modal-container {
+        width: 75% !important;
+        max-width: 64rem !important;
+      }
+    }
   </style>
 </head>
-<body class="min-h-screen animated-bg flex items-center justify-center p-4 relative overflow-hidden">
+<body class="min-h-screen animated-bg p-4 relative overflow-hidden">
   
   <div class="absolute top-0 left-0 w-full h-full bg-black/10 z-0"></div>
 
@@ -119,7 +220,7 @@ function statusText($p){
   </a>
 
   <div class="w-full max-w-md relative z-10">
-    <div class="glass p-8 rounded-[2.5rem] shadow-2xl animate-entry <?= $error ? 'shake border-red-400' : '' ?>">
+    <div class="glass p-8 rounded-[2.5rem] shadow-2xl animate-entry <?= isset($error) && $error ? 'shake border-red-400' : '' ?>">
       <div class="text-center mb-8">
         <img src="/sistemptt_demo/layout/img/logo.webp" class="mx-auto w-24 h-24 rounded-3xl shadow-2xl mb-4 hover:scale-110 transition-transform duration-500">
         <h1 class="text-2xl font-black text-slate-800 tracking-tight leading-none uppercase">SMK ISFI</h1>
@@ -128,8 +229,8 @@ function statusText($p){
 
       <form method="POST" id="searchForm" class="space-y-5">
         <input type="hidden" name="action" value="search">
-        <?php if ($error): ?>
-          <div class="bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-100 text-sm font-bold text-center"><?= $error ?></div>
+        <?php if (isset($error) && $error): ?>
+          <div class="bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-100 text-sm font-bold text-center"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
         <div class="form-item opacity-0">
@@ -147,8 +248,6 @@ function statusText($p){
       </form>
     </div>
     <p class="text-center text-[10px] font-bold text-white/60 mt-8 uppercase tracking-[0.3em] animate-entry" style="animation-delay: 1s">© 2026 SMK ISFI Banjarmasin</p>
-</div>
-    </div>
   </div>
 
   <?php if ($showModal && $dataSiswa): ?>
@@ -156,45 +255,46 @@ function statusText($p){
        class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible"
        style="transition: all 0.4s ease;">
     
-    <div class="w-full max-w-4xl relative glass rounded-[2.5rem] shadow-2xl p-0 max-h-[90vh] overflow-hidden modal-enter opacity-0">
-      <div class="p-8 border-b border-white/20 relative">
-        <div class="flex justify-between items-start gap-6">
+    <div class="modal-container relative glass rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col" style="max-height: 85vh;">
+      
+      <div class="p-6 md:p-8 border-b border-white/20 flex-shrink-0">
+        <div class="flex justify-between items-start gap-6 flex-wrap">
           <div>
-            <h2 class="text-3xl font-black text-slate-800 tracking-tight">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight">
               <?= htmlspecialchars($dataSiswa['nama_siswa']) ?>
             </h2>
-            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-1">Hasil Pencarian Pelanggaran</p>
+            <p class="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest mt-1">Hasil Pencarian Pelanggaran</p>
           </div>
 
           <div class="flex items-center gap-4 text-right">
             <div>
               <p class="text-xs uppercase tracking-wide text-slate-400 font-bold">Total Poin</p>
-              <p class="text-xl font-black <?= statusText($totalPoin) ?>">
+              <p class="text-lg md:text-xl font-black <?= statusText($totalPoin) ?>">
                 <?= statusLabel($totalPoin) ?>
               </p>
             </div>
 
-            <div class="<?= statusCircle($totalPoin) ?> w-20 h-20 rounded-3xl flex items-center justify-center text-2xl font-black shadow-2xl ring-4 ring-white/50">
+            <div class="<?= statusCircle($totalPoin) ?> w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center text-xl md:text-2xl font-black shadow-2xl ring-4 ring-white/50">
               <?= $totalPoin ?>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="p-8 bg-slate-50/80 max-h-[60vh] overflow-y-auto">
+      <div class="modal-body-scroll p-6 md:p-8 bg-slate-50/80">
         <div class="space-y-4">
           <?php foreach ($pelanggaranList as $p): ?>
-          <div class="glass p-6 rounded-2xl hover:shadow-xl transition-all border-white/30 hover:-translate-y-1">
-            <div class="flex justify-between items-start gap-4">
-              <div class="flex gap-4 items-start flex-1">
+          <div class="glass p-4 md:p-6 rounded-2xl hover:shadow-xl transition-all border-white/30 hover:-translate-y-1">
+            <div class="flex justify-between items-start gap-4 flex-wrap">
+              <div class="flex gap-4 items-start flex-1 min-w-[200px]">
                 <div class="w-3 h-3 rounded-full mt-2.5 <?= statusCircle($p['poin']) ?> shadow-lg"></div>
                 <div>
-                  <p class="font-black text-slate-800 text-lg"><?= htmlspecialchars($p['nama_pelanggaran']) ?></p>
-                  <p class="text-sm text-slate-500 font-semibold mt-1"><?= date('d M Y', strtotime($p['tanggal'])) ?></p>
+                  <p class="font-black text-slate-800 text-base md:text-lg"><?= htmlspecialchars($p['nama_pelanggaran']) ?></p>
+                  <p class="text-xs md:text-sm text-slate-500 font-semibold mt-1"><?= date('d M Y', strtotime($p['tanggal'])) ?></p>
                 </div>
               </div>
 
-              <span class="<?= pointBadge($p['poin']) ?> inline-flex items-center px-5 py-2.5 rounded-2xl text-sm font-black ring-2 ring-inset shadow-lg">
+              <span class="<?= pointBadge($p['poin']) ?> inline-flex items-center px-3 md:px-5 py-1.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black ring-2 ring-inset shadow-lg">
                 <?= $p['poin'] ?> Poin
               </span>
             </div>
@@ -202,21 +302,21 @@ function statusText($p){
           <?php endforeach; ?>
 
           <?php if (!$pelanggaranList): ?>
-          <div class="text-center py-20">
-            <i class='bx bx-check-circle text-6xl text-emerald-400 mb-4'></i>
-            <p class="text-2xl font-black text-slate-400 mb-2">Selamat!</p>
-            <p class="text-slate-500 font-semibold">Tidak ada riwayat pelanggaran</p>
+          <div class="text-center py-12 md:py-20">
+            <i class='bx bx-check-circle text-5xl md:text-6xl text-emerald-400 mb-4'></i>
+            <p class="text-xl md:text-2xl font-black text-slate-400 mb-2">Selamat!</p>
+            <p class="text-sm md:text-base text-slate-500 font-semibold">Tidak ada riwayat pelanggaran</p>
           </div>
           <?php endif; ?>
         </div>
       </div>
 
-      <div class="p-8 border-t border-white/20 bg-white/50">
+      <div class="modal-footer p-6 md:p-8 border-t border-white/20 bg-white/50">
         <form method="POST" id="closeForm">
           <input type="hidden" name="action" value="close_modal">
           <input type="hidden" name="nis" value="<?= htmlspecialchars($_POST['nis'] ?? '') ?>">
           <button type="submit" id="closeBtn"
-                  class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-2xl font-black tracking-widest transition-all active:scale-95 shadow-xl relative overflow-hidden">
+                  class="w-full bg-slate-900 hover:bg-black text-white py-3 md:py-4 rounded-xl md:rounded-2xl font-black tracking-widest transition-all active:scale-95 shadow-xl relative overflow-hidden">
             TUTUP
           </button>
         </form>
@@ -263,10 +363,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (modal) {
       modal.style.opacity = '1';
       modal.style.visibility = 'visible';
-      const modalContent = modal.querySelector('.glass');
+      const modalContent = modal.querySelector('.modal-container');
       if (modalContent) modalContent.style.opacity = '1';
     }
-  }, 500);
+  }, 100);
   <?php endif; ?>
 
   const closeBtn = document.getElementById("closeBtn");
@@ -286,8 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener('click', function(e) {
   const modal = document.getElementById('modal');
-  const modalContent = modal ? modal.querySelector('.glass') : null;
-  if (modal && modalContent && !modalContent.contains(e.target)) {
+  const modalContent = modal ? modal.querySelector('.modal-container') : null;
+  if (modal && modalContent && !modalContent.contains(e.target) && modal.style.visibility === 'visible') {
     document.getElementById('closeForm').submit();
   }
 });

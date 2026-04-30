@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
   <meta charset="UTF-8">
   <title>Login | Sistem Pelanggaran</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <style>
@@ -53,9 +53,66 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     @keyframes rippleEffect { from { scale: 0; opacity: 1; } to { scale: 4; opacity: 0; } }
     @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 50% { transform: translateX(8px); } 75% { transform: translateX(-4px); } }
     .shake { animation: shake .45s ease; }
+    
+    body {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 100vh !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+    }
+    
+    .w-full.max-w-md {
+      max-width: 32rem !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    
+    @media (min-width: 1024px) {
+      .glass {
+        padding: 2.5rem !important;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 1280px) {
+      body {
+        padding: 1.5rem !important;
+      }
+      .w-full.max-w-md {
+        max-width: 30rem !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      body {
+        padding: 2rem !important;
+      }
+      .w-full.max-w-md {
+        max-width: 34rem !important;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 0.75rem !important;
+      }
+      .glass {
+        padding: 1.5rem !important;
+      }
+    }
+    
+    .fixed.top-6.left-6 {
+      position: fixed !important;
+      top: 1.5rem !important;
+      left: 1.5rem !important;
+      z-index: 50 !important;
+    }
+    
   </style>
 </head>
-<body class="min-h-screen animated-bg flex items-center justify-center p-4 relative overflow-hidden">
+<body class="min-h-screen animated-bg p-4 relative overflow-hidden">
   
   <div class="absolute top-0 left-0 w-full h-full bg-black/10 z-0"></div>
 
@@ -75,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       <form method="POST" id="loginForm" class="space-y-5">
         <?php if ($error): ?>
-          <div class="bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-100 text-sm font-bold text-center"><?= $error ?></div>
+          <div class="bg-red-50 text-red-600 px-4 py-3 rounded-xl border border-red-100 text-sm font-bold text-center"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
         <div class="form-item opacity-0">
@@ -135,7 +192,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         });
       }
     });
-  </script>
   </script>
 </body>
 </html>
