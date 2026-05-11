@@ -109,16 +109,12 @@ LIMIT 5
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- HEADER -->
         <div class="text-center mb-12 animate-fade-in">
             <h1 class="text-4xl lg:text-5xl font-black bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-4">
                 Dashboard Pelanggaran
             </h1>
             <p class="text-xl text-slate-600 font-medium">Analisis Data Pelanggaran Siswa Real-time</p>
         </div>
-
-        <!-- STATS CARDS -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <?php 
             $stats = [
@@ -145,9 +141,7 @@ LIMIT 5
             <?php endforeach; ?>
         </div>
 
-        <!-- CHARTS ROW -->
         <div class="grid lg:grid-cols-2 gap-8 mb-12">
-            <!-- PIE CHART -->
             <div class="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500 animate-slide-up" style="animation-delay: 200ms">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -160,7 +154,6 @@ LIMIT 5
                 </div>
             </div>
 
-            <!-- LINE CHART -->
             <div class="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500 animate-slide-up" style="animation-delay: 300ms">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -172,9 +165,7 @@ LIMIT 5
             </div>
         </div>
 
-        <!-- BAR CHART & TABLE ROW -->
         <div class="grid lg:grid-cols-2 gap-8">
-            <!-- BAR CHART -->
             <div class="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500 animate-slide-up" style="animation-delay: 400ms">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -185,7 +176,6 @@ LIMIT 5
                 <canvas id="barChart" class="h-80 w-full"></canvas>
             </div>
 
-            <!-- RECENT TABLE -->
             <div class="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500 animate-slide-up" style="animation-delay: 500ms">
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -221,7 +211,6 @@ LIMIT 5
     </div>
 
     <script>
-        // Enhanced PIE CHART with doughnut style
         const pieCtx = document.getElementById('pieChart').getContext('2d');
         new Chart(pieCtx, {
             type: 'doughnut',
@@ -262,7 +251,6 @@ LIMIT 5
             }
         });
 
-        // Enhanced LINE CHART
         new Chart(document.getElementById('lineChart'), {
             type: 'line',
             data: {
@@ -298,7 +286,6 @@ LIMIT 5
             }
         });
 
-        // Enhanced BAR CHART
         const barCtx = document.getElementById('barChart').getContext('2d');
         const gradient = barCtx.createLinearGradient(0, 0, 0, 400);
         gradient.addColorStop(0, 'rgba(251,146,60,0.9)');

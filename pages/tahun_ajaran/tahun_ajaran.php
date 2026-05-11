@@ -28,7 +28,6 @@ $total_page  = ceil($total_data / $limit);
 <div class="animate__animated animate__fadeIn p-4 md:p-8">
 <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
 
-    <!-- HEADER -->
     <div class="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
             <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Tahun Pelajaran</h2>
@@ -44,7 +43,6 @@ $total_page  = ceil($total_data / $limit);
         </a>
     </div>
 
-    <!-- FILTER -->
     <form action="index.php" method="GET" class="p-6 bg-slate-50/60 border-b border-slate-100">
         <input type="hidden" name="page" value="tahun_ajaran">
 
@@ -61,7 +59,6 @@ $total_page  = ceil($total_data / $limit);
         </div>
     </form>
 
-    <!-- TABLE -->
     <div class="overflow-x-auto">
         <table class="min-w-full text-sm text-left">
             <thead>
