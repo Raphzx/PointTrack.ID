@@ -105,7 +105,7 @@ html, body {
 <div 
 class="min-h-screen flex"
 x-data="{
-    open: window.innerWidth >= 1280, // 🔥 FIX ANDROID
+    open: window.innerWidth >= 1280,
     toggle(){ this.open = !this.open }
 }"
 >
