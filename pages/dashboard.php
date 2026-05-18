@@ -41,7 +41,6 @@ while($d=mysqli_fetch_assoc($line)){
     $line_data[]=$d['total'];
 }
 
-// BAR (TOP 5)
 $bar = mysqli_query($connect,"
 SELECT jp.nama_pelanggaran, COUNT(*) total
 FROM pelanggaran p
@@ -57,7 +56,6 @@ while($d=mysqli_fetch_assoc($bar)){
     $bar_data[]=$d['total'];
 }
 
-// TABLE
 $recent = mysqli_query($connect,"
 SELECT s.nama_siswa, jp.nama_pelanggaran, p.tanggal
 FROM pelanggaran p
