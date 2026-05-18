@@ -9,7 +9,7 @@ function is_logged_in(): bool {
 
 function auth_check(): void {
     if (!is_logged_in()) {
-        header("Location: /sistemptt_demo/pages/auth/login.php");
+        header("Location: pages/auth/login.php");
         exit;
     }
 }

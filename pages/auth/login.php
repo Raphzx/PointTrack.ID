@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_id']   = $user['id'];
             $_SESSION['user_name'] = $user['fullname'];
             $_SESSION['user_role'] = $user['role'];
-            header("Location: /sistemptt_demo/index.php?page=dashboard");
+            header("Location: ../../index.php?page=dashboard");
             exit;
         } else { $error = "Password salah."; }
     } else { $error = "Email tidak ditemukan."; }
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   
   <div class="absolute top-0 left-0 w-full h-full bg-black/10 z-0"></div>
 
-  <a href="/sistemptt_demo/" id="backBtn" 
+  <a href="../../index.php" id="backBtn" 
       class="fixed top-6 left-6 z-50 flex items-center gap-2 px-6 py-3 bg-white/20 hover:bg-white/40 text-white rounded-2xl backdrop-blur-lg transition-all shadow-xl font-bold opacity-0 -translate-y-5" 
       style="transition: all 0.6s ease 0.2s;">
     <i class='bx bx-arrow-back text-xl'></i> <span>Back</span>
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <div class="w-full max-w-md relative z-10">
     <div class="glass p-8 rounded-[2.5rem] shadow-2xl animate-entry <?= $error ? 'shake border-red-400' : '' ?>">
       <div class="text-center mb-8">
-        <img src="/sistemptt_demo/layout/img/logo.webp" class="mx-auto w-24 h-24 rounded-3xl shadow-2xl mb-4 hover:scale-110 transition-transform duration-500">
+        <img src="../../layout/img/logo.webp" class="mx-auto w-24 h-24 rounded-3xl shadow-2xl mb-4 hover:scale-110 transition-transform duration-500">
         <h1 class="text-2xl font-black text-slate-800 tracking-tight leading-none uppercase">SMK ISFI</h1>
         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Sistem Pelanggaran</p>
       </div>

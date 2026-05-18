@@ -4,7 +4,7 @@ session_start();
 require "../../config/connection.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header("Location: /sistemptt_demo/pages/auth/login.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -13,7 +13,7 @@ $password = $_POST['password'] ?? '';
 
 if ($email === '' || $password === '') {
     $_SESSION['login_error'] = "Email dan password wajib diisi.";
-    header("Location: /sistemptt_demo/pages/auth/login.php");
+    header("Location: login.php");
     exit;
 }
 
@@ -24,7 +24,7 @@ try {
 
     if (!$user || !password_verify($password, $user['password'])) {
         $_SESSION['login_error'] = "Email atau password salah.";
-        header("Location: /sistemptt_demo/pages/auth/login.php");
+        header("Location: login.php");
         exit;
     }
 
@@ -34,11 +34,11 @@ try {
 
     session_regenerate_id(true);
 
-    header("Location: /sistemptt_demo/index.php?page=dashboard");
+    header("Location: ../../index.php?page=dashboard");
     exit;
 
 } catch (PDOException $e) {
     $_SESSION['login_error'] = "Terjadi kesalahan sistem.";
-    header("Location: /sistemptt_demo/pages/auth/login.php");
+    header("Location: login.php");
     exit;
 }
