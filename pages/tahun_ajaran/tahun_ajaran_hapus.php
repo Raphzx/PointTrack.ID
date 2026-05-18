@@ -8,25 +8,25 @@ if ($id > 0) {
 
     if ($data) {
         if ($data['status'] == 'Aktif') {
-            echo "<script>window.location.href='index.php?page=tahun_ajaran&status=error_active';</script>";
+            echo "<script>window.location.href='tahun_ajaran?status=error_active';</script>";
             exit;
         }
 
         $delete = mysqli_query($connect, "DELETE FROM tahun_pelajaran WHERE id = '$id'");
 
         if ($delete) {
-            echo "<script>window.location.href='index.php?page=tahun_ajaran&status=success_delete';</script>";
+            echo "<script>window.location.href='tahun_ajaran?status=success_delete';</script>";
             exit;
         } else {
-            echo "<script>window.location.href='index.php?page=tahun_ajaran&status=error';</script>";
+            echo "<script>window.location.href='tahun_ajaran?status=error';</script>";
             exit;
         }
     } else {
-        echo "<script>window.location.href='index.php?page=tahun_ajaran&status=not_found';</script>";
+        echo "<script>window.location.href='tahun_ajaran?status=not_found';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=tahun_ajaran';</script>";
+    echo "<script>window.location.href='tahun_ajaran';</script>";
     exit;
 }
 ?>

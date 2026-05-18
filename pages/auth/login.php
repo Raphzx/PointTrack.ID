@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_id']   = $user['id'];
             $_SESSION['user_name'] = $user['fullname'];
             $_SESSION['user_role'] = $user['role'];
-            header("Location: ../../index.php?page=dashboard");
+            header("Location: ../../dashboard");
             exit;
         } else { $error = "Password salah."; }
     } else { $error = "Email tidak ditemukan."; }

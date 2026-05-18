@@ -7,7 +7,7 @@ if (isset($_POST['update'])) {
     $poin             = intval($_POST['poin']);
 
     if (empty($nama_pelanggaran) || $id <= 0 || $poin <= 0) {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran_edit&id=$id&status=empty';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran_edit?id=$id&status=empty';</script>";
         exit;
     }
 
@@ -17,14 +17,14 @@ if (isset($_POST['update'])) {
               WHERE id = '$id'";
     
     if (mysqli_query($connect, $query)) {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran&status=success_edit';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran?status=success_edit';</script>";
         exit;
     } else {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran&status=error';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran?status=error';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=jenis_pelanggaran';</script>";
+    echo "<script>window.location.href='jenis_pelanggaran';</script>";
     exit;
 }
 ?>

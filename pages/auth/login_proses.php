@@ -34,7 +34,7 @@ try {
 
     session_regenerate_id(true);
 
-    header("Location: ../../index.php?page=dashboard");
+    header("Location: ../../dashboard");
     exit;
 
 } catch (PDOException $e) {

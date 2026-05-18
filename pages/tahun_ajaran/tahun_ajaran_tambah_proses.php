@@ -16,7 +16,7 @@ if (isset($_POST['simpan'])) {
         
         if (mysqli_query($connect, $sql)) {
             mysqli_commit($connect);
-            echo "<script>window.location.href='index.php?page=tahun_ajaran&status=success_add';</script>";
+            echo "<script>window.location.href='tahun_ajaran?status=success_add';</script>";
             exit;
         } else {
             throw new Exception(mysqli_error($connect));
@@ -24,12 +24,12 @@ if (isset($_POST['simpan'])) {
 
     } catch (Exception $e) {
         mysqli_rollback($connect);
-        echo "<script>window.location.href='index.php?page=tahun_ajaran&status=error';</script>";
+        echo "<script>window.location.href='tahun_ajaran?status=error';</script>";
         exit;
     }
 
 } else {
-    echo "<script>window.location.href='index.php?page=tahun_ajaran';</script>";
+    echo "<script>window.location.href='tahun_ajaran';</script>";
     exit;
 }
 ?>

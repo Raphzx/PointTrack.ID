@@ -2,7 +2,7 @@
 include __DIR__ . '/../../config/connection.php';
 
 if (!isset($_GET['id'])) {
-    header("Location: index.php?page=users");
+    header("Location: users");
     exit;
 }
 
@@ -38,7 +38,7 @@ if (!$user) {
             </div>
         </div>
 
-        <form action="index.php?page=users_edit_proses" method="POST" class="p-8 space-y-6">
+        <form action="users_edit_proses" method="POST" class="p-8 space-y-6">
             <input type="hidden" name="id" value="<?= $user['id'] ?>">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -115,7 +115,7 @@ if (!$user) {
             </div>
 
             <div class="flex items-center justify-end gap-3 pt-6 border-t border-slate-50">
-                <a href="index.php?page=users" 
+                <a href="users" 
                    class="px-6 py-3 rounded-2xl border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all duration-300">
                     Batal
                 </a>

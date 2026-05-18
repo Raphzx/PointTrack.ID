@@ -9,14 +9,14 @@ if (isset($_GET['id'])) {
 
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        echo "<script>window.location.href='index.php?page=users';</script>";
+        echo "<script>window.location.href='users';</script>";
         exit;
     } else {
         mysqli_stmt_close($stmt);
         echo "Gagal menghapus user.";
     }
 } else {
-    header("Location: index.php?page=users");
+    header("Location: users");
     exit;
 }
 ?>

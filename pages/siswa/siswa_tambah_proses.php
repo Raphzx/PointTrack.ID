@@ -31,18 +31,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         mysqli_commit($connect);
         
-        echo "<script>window.location.href='index.php?page=siswa&status=success_add';</script>";
+        echo "<script>window.location.href='siswa?status=success_add';</script>";
         exit;
 
     } catch (Exception $e) {
         mysqli_rollback($connect);
 
         $error_msg = urlencode($e->getMessage());
-        echo "<script>window.location.href='index.php?page=siswa_tambah&status=error&msg=$error_msg';</script>";
+        echo "<script>window.location.href='siswa_tambah?status=error&msg=$error_msg';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=siswa';</script>";
+    echo "<script>window.location.href='siswa';</script>";
     exit;
 }
 ?>

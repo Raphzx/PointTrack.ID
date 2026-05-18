@@ -2,7 +2,7 @@
 
 <div class="animate__animated animate__fadeIn p-4 md:p-8">
     <div class="max-w-2xl mx-auto">
-        <a href="index.php?page=kelas" class="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors mb-6 group">
+        <a href="kelas" class="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors mb-6 group">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -15,7 +15,7 @@
                 <p class="text-sm text-slate-500">Silakan lengkapi form di bawah untuk menambah data kelas.</p>
             </div>
 
-            <form action="index.php?page=kelas_tambah_proses" method="POST" class="p-8 space-y-6">
+            <form action="kelas_tambah_proses" method="POST" class="p-8 space-y-6">
                 <div class="space-y-2">
                     <label for="nama_kelas" class="text-sm font-bold text-slate-700 ml-1">Nama Kelas</label>
                     <div class="relative">

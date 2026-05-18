@@ -15,11 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        echo "<script>window.location.href='index.php?page=users';</script>";
+        echo "<script>window.location.href='users';</script>";
         exit;
     } else {
         mysqli_stmt_close($stmt);
-        header("Location: index.php?page=users_tambah&error=1");
+        header("Location: users_tambah?error=1");
         exit;
     }
 }

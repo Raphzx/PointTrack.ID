@@ -27,7 +27,7 @@ if (isset($_POST['simpan'])) {
         }
 
         mysqli_commit($connect);
-        header("Location: ../../index.php?page=riwayat_kelas&status=success");
+        header("Location: ../../riwayat_kelas?status=success");
     } catch (Exception $e) {
         mysqli_rollback($connect);
         echo "Error: " . $e->getMessage();

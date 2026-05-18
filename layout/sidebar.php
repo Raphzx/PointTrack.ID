@@ -64,7 +64,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
   style="height: calc(100vh - 72px);"
 >
     <a
-      href="index.php?page=dashboard"
+      href="dashboard"
       class="flex items-center gap-3 px-4 py-2 rounded-lg transition <?= active('dashboard',$page) ?>"
     >
       <svg
@@ -129,7 +129,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
         class="mt-1 space-y-1"
       >
         <a
-          href="index.php?page=users"
+          href="users"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('users',$page) ?>"
         >
           <svg
@@ -149,7 +149,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Kelola Pengguna</span>
         </a>
         <a
-          href="index.php?page=siswa"
+          href="siswa"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('siswa',$page) ?>"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -159,7 +159,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Data Siswa</span>
         </a>
         <a
-          href="index.php?page=kelas" 
+          href="kelas" 
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('kelas',$page) ?>"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -168,7 +168,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Data Kelas</span>
         </a>
         <a
-          href="index.php?page=tahun_ajaran"
+          href="tahun_ajaran"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('tahun_ajaran',$page) ?>"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -177,7 +177,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Kelola Tahun Ajaran</span>
         </a>
         <a
-  href="index.php?page=riwayat_kelas"
+  href="riwayat_kelas"
   class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('riwayat_kelas', $page) ?>"
 >
   <svg
@@ -197,7 +197,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
   <span x-show="open">Riwayat Kelas</span>
 </a>
         <a
-          href="index.php?page=jenis_pelanggaran"
+          href="jenis_pelanggaran"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('jenis_pelanggaran',$page) ?>"
         >
           <svg
@@ -276,7 +276,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
         class="mt-1 space-y-1"
       >
         <a
-          href="index.php?page=pelanggaran_siswa"
+          href="pelanggaran_siswa"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('pelanggaran_siswa',$page) ?>"
         >
           <svg
@@ -296,7 +296,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Pelanggaran Siswa</span>
         </a>
         <a
-          href="index.php?page=riwayat_siswa"
+          href="riwayat_siswa"
           class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('riwayat_siswa',$page) ?>"
         >
           <svg
@@ -316,7 +316,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Riwayat Pelanggaran</span>
         </a>
         <a
-  href="index.php?page=poin_siswa"
+  href="poin_siswa"
   class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('poin_siswa', $page) ?>"
 >
           <svg
@@ -338,7 +338,7 @@ $role = $_SESSION['user_role'] ?? 'guru';
       </div>
     </div>
     <a
-      href="index.php?page=pelanggaran"
+      href="pelanggaran"
       class="flex items-center gap-3 px-4 py-2 rounded-lg transition <?= active('pelanggaran',$page) ?>"
     >
       <svg

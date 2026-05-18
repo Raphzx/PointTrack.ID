@@ -8,7 +8,7 @@ include __DIR__ . '/../../config/connection.php';
     <div class="max-w-2xl mx-auto">
         
         <nav class="flex mb-4 text-slate-400 text-xs font-bold uppercase tracking-widest">
-            <a href="index.php?page=tahun_ajaran" class="hover:text-indigo-600 transition-colors">Tahun Pelajaran</a>
+            <a href="tahun_ajaran" class="hover:text-indigo-600 transition-colors">Tahun Pelajaran</a>
             <span class="mx-2">/</span>
             <span class="text-slate-800">Tambah Baru</span>
         </nav>
@@ -19,7 +19,7 @@ include __DIR__ . '/../../config/connection.php';
                 <p class="text-sm text-slate-500">Daftarkan periode akademik baru ke dalam sistem</p>
             </div>
             
-            <form action="index.php?page=tahun_ajaran_tambah_proses" method="POST" class="p-8 space-y-6">
+            <form action="tahun_ajaran_tambah_proses" method="POST" class="p-8 space-y-6">
                 <div>
                     <label class="block text-[11px] font-bold uppercase text-slate-400 mb-2 ml-1 tracking-wider">Nama Tahun Pelajaran</label>
                     <input type="text" name="nama_tahun" placeholder="Contoh: 2025/2026" required
@@ -43,7 +43,7 @@ include __DIR__ . '/../../config/connection.php';
                 </div>
 
                 <div class="flex items-center justify-end gap-3 pt-6 border-t border-slate-50">
-                    <a href="index.php?page=tahun_ajaran" 
+                    <a href="tahun_ajaran" 
                        class="px-6 py-3 text-sm font-bold text-slate-400 hover:text-rose-500 transition-colors uppercase tracking-widest">
                         Batal
                     </a>

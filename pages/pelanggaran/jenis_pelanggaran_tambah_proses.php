@@ -6,21 +6,21 @@ if (isset($_POST['simpan'])) {
     $poin             = intval($_POST['poin']);
 
     if (empty($nama_pelanggaran) || $poin <= 0) {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran_tambah&status=empty';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran_tambah?status=empty';</script>";
         exit;
     }
 
     $query = "INSERT INTO jenis_pelanggaran (nama_pelanggaran, poin) VALUES ('$nama_pelanggaran', '$poin')";
     
     if (mysqli_query($connect, $query)) {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran&status=success_add';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran?status=success_add';</script>";
         exit;
     } else {
-        echo "<script>window.location.href='index.php?page=jenis_pelanggaran&status=error';</script>";
+        echo "<script>window.location.href='jenis_pelanggaran?status=error';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=jenis_pelanggaran';</script>";
+    echo "<script>window.location.href='jenis_pelanggaran';</script>";
     exit;
 }
 ?>

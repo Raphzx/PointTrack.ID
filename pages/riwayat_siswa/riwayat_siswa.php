@@ -138,7 +138,7 @@ $total  = mysqli_num_rows($result);
 
                     <td class="px-6 py-4 text-center">
                         <div class="flex justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <a href="index.php?page=riwayat_siswa_hapus&id=<?= $row['pelanggaran_id'] ?>"
+                            <a href="riwayat_siswa_hapus?id=<?= $row['pelanggaran_id'] ?>"
                                onclick="return confirm('Hapus riwayat pelanggaran ini?')"
                                class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all"
                                title="Hapus">

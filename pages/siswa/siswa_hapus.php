@@ -19,17 +19,17 @@ if (isset($_GET['id'])) {
 
         mysqli_commit($connect);
 
-        echo "<script>window.location.href='index.php?page=siswa&status=success_delete';</script>";
+        echo "<script>window.location.href='siswa?status=success_delete';</script>";
         exit;
 
     } catch (Exception $e) {
         mysqli_rollback($connect);
 
-        echo "<script>window.location.href='index.php?page=siswa&status=error';</script>";
+        echo "<script>window.location.href='siswa?status=error';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=siswa';</script>";
+    echo "<script>window.location.href='siswa';</script>";
     exit;
 }
 ?>

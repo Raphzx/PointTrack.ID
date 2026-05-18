@@ -54,7 +54,7 @@ $total_page = ceil($total_data / $limit);
                         </div>
                     </form>
 
-                    <a href="index.php?page=users_tambah"
+                    <a href="users_tambah"
                        class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700
                               text-white text-sm font-semibold rounded-xl shadow-md">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
@@ -120,7 +120,7 @@ $total_page = ceil($total_data / $limit);
                         <td class="px-8 py-5 text-right">
                             <div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 
-                                <a href="index.php?page=users_edit&id=<?= $item['id'] ?>" 
+                                <a href="users_edit?id=<?= $item['id'] ?>" 
                                    class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-100 rounded-xl transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
@@ -131,7 +131,7 @@ $total_page = ceil($total_data / $limit);
                                 </a>
 
                                 <?php if ($item['id'] != $login_user_id): ?>
-                                <a href="index.php?page=users_hapus&id=<?= $item['id'] ?>" 
+                                <a href="users_hapus?id=<?= $item['id'] ?>" 
                                    onclick="return confirm('Hapus user ini?')"
                                    class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-100 rounded-xl transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
@@ -163,7 +163,7 @@ $total_page = ceil($total_data / $limit);
         <div class="p-6 bg-white border-t border-slate-50 flex justify-center">
             <nav class="flex gap-2">
                 <?php for($i = 1; $i <= $total_page; $i++): ?>
-                <a href="index.php?page=users&p=<?= $i ?>&search=<?= urlencode($keyword) ?>"
+                <a href="users?p=<?= $i ?>&search=<?= urlencode($keyword) ?>"
                    class="w-10 h-10 flex items-center justify-center rounded-xl text-sm font-bold transition-all duration-300
                    <?= $i == $current_page ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 scale-110'
                                           : 'bg-white text-slate-400 hover:bg-slate-100 border border-slate-100' ?>">

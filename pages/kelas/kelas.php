@@ -40,7 +40,7 @@ $total_page = ceil($total_data / $limit);
         </p>
     </div>
 
-    <a href="index.php?page=kelas_tambah"
+    <a href="kelas_tambah"
        class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700
               text-white text-sm font-semibold rounded-xl shadow-md">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
@@ -113,7 +113,7 @@ Tingkat <?= $item['tingkat'] ?>
 
 <td class="px-8 py-5 text-right">
 <div class="flex justify-end opacity-0 group-hover:opacity-100 transition">
-<a href="index.php?page=kelas_hapus&id=<?= $item['id'] ?>"
+<a href="kelas_hapus?id=<?= $item['id'] ?>"
    onclick="return confirm('Hapus data kelas ini?')"
    class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
@@ -148,7 +148,7 @@ Halaman <?= $current_page ?> dari <?= $total_page ?>
 $nav="&search=".urlencode($keyword)."&tingkat=$filter_tingkat";
 for($i=1;$i<=$total_page;$i++):
 ?>
-<a href="index.php?page=kelas&p=<?= $i.$nav ?>"
+<a href="kelas?p=<?= $i.$nav ?>"
    class="w-9 h-9 flex items-center justify-center rounded-xl text-xs font-bold
    <?= $i==$current_page?'bg-indigo-600 text-white':'bg-white border text-slate-400 hover:bg-slate-100' ?>">
 <?= $i ?>

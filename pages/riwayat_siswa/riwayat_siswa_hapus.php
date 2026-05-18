@@ -11,15 +11,15 @@ if ($id > 0) {
     );
 
     if ($delete) {
-        echo "<script>window.location.href='index.php?page=riwayat_siswa&status=success_delete';</script>";
+        echo "<script>window.location.href='riwayat_siswa?status=success_delete';</script>";
         exit;
     } else {
-        echo "<script>window.location.href='index.php?page=riwayat_siswa&status=error';</script>";
+        echo "<script>window.location.href='riwayat_siswa?status=error';</script>";
         exit;
     }
 
 } else {
-    echo "<script>window.location.href='index.php?page=riwayat_siswa';</script>";
+    echo "<script>window.location.href='riwayat_siswa';</script>";
     exit;
 }
 ?>

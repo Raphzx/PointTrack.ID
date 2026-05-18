@@ -2,7 +2,7 @@
 include __DIR__ . '/../../config/connection.php';
 
 if (!isset($_GET['id'])) {
-    header("Location: index.php?page=siswa");
+    header("Location: siswa");
     exit;
 }
 
@@ -38,7 +38,7 @@ if (!$siswa) {
             </div>
         </div>
 
-        <form action="index.php?page=siswa_edit_proses" method="POST" class="p-8 space-y-6">
+        <form action="siswa_edit_proses" method="POST" class="p-8 space-y-6">
             <input type="hidden" name="id" value="<?= $siswa['id'] ?>">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -67,7 +67,7 @@ if (!$siswa) {
             </div>
 
             <div class="flex items-center justify-end gap-3 pt-6 border-t border-slate-50">
-                <a href="index.php?page=siswa" class="px-6 py-3 rounded-2xl border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all">Batal</a>
+                <a href="siswa" class="px-6 py-3 rounded-2xl border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all">Batal</a>
                 <button type="submit" class="px-8 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold transition-all shadow-lg shadow-indigo-100 hover:-translate-y-1">Simpan Perubahan</button>
             </div>
         </form>

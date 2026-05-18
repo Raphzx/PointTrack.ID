@@ -68,7 +68,7 @@ if ($filter_tingkat) {
         </p>
     </div>
 
-    <a href="index.php?page=siswa_tambah"
+    <a href="siswa_tambah"
        class="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700
               text-white text-sm font-semibold rounded-xl shadow-md">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
@@ -167,7 +167,7 @@ Tingkat <?= $row['tingkat'] ?>
 
 <td class="px-8 py-5 text-right">
 <div class="flex justify-end gap-1">
-<a href="index.php?page=siswa_edit&id=<?= $row['id'] ?>"
+<a href="siswa_edit?id=<?= $row['id'] ?>"
    class="p-2 rounded-xl text-slate-400 hover:text-indigo-600 hover:bg-indigo-50">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
      viewBox="0 0 24 24">
@@ -177,7 +177,7 @@ Tingkat <?= $row['tingkat'] ?>
 </svg>
 </a>
 
-<a href="index.php?page=siswa_hapus&id=<?= $row['id'] ?>"
+<a href="siswa_hapus?id=<?= $row['id'] ?>"
    onclick="return confirm('Hapus data siswa ini?')"
    class="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
@@ -214,7 +214,7 @@ Halaman <?= $current_page ?> dari <?= $total_page ?>
 $nav="&search=".urlencode($keyword)."&tingkat=$filter_tingkat&kelas=$filter_kelas";
 for($i=1;$i<=$total_page;$i++):
 ?>
-<a href="index.php?page=siswa&p=<?= $i.$nav ?>"
+<a href="siswa?p=<?= $i.$nav ?>"
    class="w-9 h-9 flex items-center justify-center rounded-xl text-xs font-bold
    <?= $i==$current_page?'bg-indigo-600 text-white':'bg-white border text-slate-400 hover:bg-slate-100' ?>">
 <?= $i ?>

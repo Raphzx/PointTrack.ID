@@ -6,20 +6,20 @@ if (isset($_POST['submit'])) {
     $tingkat    = mysqli_real_escape_string($connect, $_POST['tingkat']);
 
     if (empty($nama_kelas) || empty($tingkat)) {
-        echo "<script>window.location.href='index.php?page=kelas_tambah&status=empty';</script>";
+        echo "<script>window.location.href='kelas_tambah?status=empty';</script>";
         exit;
     }
 
     $query = "INSERT INTO kelas (nama_kelas, tingkat) VALUES ('$nama_kelas', '$tingkat')";
     
     if (mysqli_query($connect, $query)) {
-        echo "<script>window.location.href='index.php?page=kelas&status=success_add';</script>";
+        echo "<script>window.location.href='kelas?status=success_add';</script>";
         exit;
     } else {
-        echo "<script>window.location.href='index.php?page=kelas&status=error';</script>";
+        echo "<script>window.location.href='kelas?status=error';</script>";
         exit;
     }
 } else {
-    echo "<script>window.location.href='index.php?page=kelas';</script>";
+    echo "<script>window.location.href='kelas';</script>";
     exit;
 }

@@ -7,7 +7,7 @@ $query_data = mysqli_query($connect, "SELECT * FROM tahun_pelajaran WHERE id = '
 $data = mysqli_fetch_assoc($query_data);
 
 if (!$data) {
-    echo "<script>alert('Data tidak ditemukan!'); window.location='index.php?page=tahun_ajaran';</script>";
+    echo "<script>alert('Data tidak ditemukan!'); window.location='tahun_ajaran';</script>";
     exit;
 }
 ?>
@@ -22,7 +22,7 @@ if (!$data) {
                 <p class="text-sm text-slate-500">Ubah status aktif tanpa mengubah periode akademik</p>
             </div>
             
-            <form action="index.php?page=tahun_ajaran_edit_proses" method="POST" class="p-8 space-y-6">
+            <form action="tahun_ajaran_edit_proses" method="POST" class="p-8 space-y-6">
                 <input type="hidden" name="id" value="<?= $data['id'] ?>">
 
                 <div>
@@ -50,7 +50,7 @@ if (!$data) {
                 </div>
 
                 <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-50">
-                    <a href="index.php?page=tahun_ajaran" class="px-6 py-3 text-sm font-semibold text-slate-500 hover:text-rose-500 transition-colors">Batal</a>
+                    <a href="tahun_ajaran" class="px-6 py-3 text-sm font-semibold text-slate-500 hover:text-rose-500 transition-colors">Batal</a>
                     <button type="submit" name="update" 
                             class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-2xl shadow-lg shadow-indigo-100 transition-all">
                         Update Status

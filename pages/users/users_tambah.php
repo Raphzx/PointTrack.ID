@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <form action="index.php?page=users_tambah_proses" method="POST" class="p-8 space-y-6">
+        <form action="users_tambah_proses" method="POST" class="p-8 space-y-6">
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-2">
@@ -90,7 +90,7 @@
 </div>
 
             <div class="flex items-center justify-end gap-3 pt-6 border-t border-slate-50">
-                <a href="index.php?page=users" 
+                <a href="users" 
                    class="px-6 py-3 rounded-2xl border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50 transition-all duration-300">
                     Batal
                 </a>
