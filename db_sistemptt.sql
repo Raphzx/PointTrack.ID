@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 11, 2026 at 03:30 AM
+-- Generation Time: Jun 07, 2026 at 06:48 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.16
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sistemptt`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aturan_poin`
+--
+
+CREATE TABLE `aturan_poin` (
+  `id` int NOT NULL,
+  `min_poin` int NOT NULL,
+  `max_poin` int NOT NULL,
+  `tindakan` varchar(255) NOT NULL,
+  `warna` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `aturan_poin`
+--
+
+INSERT INTO `aturan_poin` (`id`, `min_poin`, `max_poin`, `tindakan`, `warna`) VALUES
+(5, 0, 24, 'Aman / Tidak Ada Tindakan', 'emerald'),
+(6, 25, 49, 'Teguran Lisan oleh Wali Kelas', 'yellow'),
+(7, 50, 74, 'Surat Peringatan I & Pembinaan', 'orange'),
+(8, 75, 99, 'Pemanggilan Orang Tua', 'rose'),
+(9, 100, 149, 'Surat Peringatan II & Kontrak Perilaku', 'rose'),
+(10, 150, 199, 'Skorsing Ringan', 'slate'),
+(11, 200, 999, 'Rekomendasi Sidang Disiplin / Skorsing Berat', 'slate');
 
 -- --------------------------------------------------------
 
@@ -109,7 +136,10 @@ INSERT INTO `pelanggaran` (`id`, `riwayat_kelas_id`, `user_id`, `pelanggaran_id`
 (16, 15, 4, 2, '2026-04-22', 'Input otomatis'),
 (17, 15, 4, 1, '2026-04-22', 'Input otomatis'),
 (18, 13, 4, 1, '2026-04-22', 'Input otomatis'),
-(19, 13, 4, 2, '2026-04-22', 'Input otomatis');
+(20, 13, 4, 1, '2026-05-19', 'Input otomatis'),
+(21, 13, 4, 2, '2026-05-19', 'Input otomatis'),
+(22, 18, 4, 1, '2026-05-22', 'Input otomatis'),
+(23, 18, 4, 2, '2026-05-22', 'Input otomatis');
 
 -- --------------------------------------------------------
 
@@ -136,7 +166,10 @@ INSERT INTO `riwayat_kelas` (`id`, `siswa_id`, `kelas_id`, `tahun_pelajaran_id`)
 (11, 8, 9, 3),
 (13, 8, 10, 5),
 (14, 9, 10, 3),
-(15, 10, 5, 3);
+(15, 10, 5, 3),
+(16, 11, 10, 3),
+(17, 12, 10, 3),
+(18, 12, 16, 5);
 
 -- --------------------------------------------------------
 
@@ -163,7 +196,9 @@ INSERT INTO `siswa` (`id`, `nis`, `nama_siswa`, `alamat`, `tahun_masuk`) VALUES
 (4, '2022001', 'Ramardo Gengster', 'Jl. Handil Bakti', '2023'),
 (8, '123456', 'Aldi', 'sibal', '2025'),
 (9, '122333', 'andi', 'jl.simpang anim', '2026'),
-(10, '1234567', 'putri', 'jl apa aja', '2026');
+(10, '1234567', 'putri', 'jl apa aja', '2026'),
+(11, '9991909', 'andi m ridho', 'JL.Cempaka', '2026'),
+(12, '321321', 'ghilbran', 'jl,jalan123', '2026');
 
 -- --------------------------------------------------------
 
@@ -214,6 +249,12 @@ INSERT INTO `user` (`id`, `email`, `password`, `fullname`, `role`, `status`) VAL
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `aturan_poin`
+--
+ALTER TABLE `aturan_poin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jenis_pelanggaran`
@@ -268,6 +309,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `aturan_poin`
+--
+ALTER TABLE `aturan_poin`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `jenis_pelanggaran`
 --
 ALTER TABLE `jenis_pelanggaran`
@@ -283,19 +330,19 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `pelanggaran`
 --
 ALTER TABLE `pelanggaran`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `riwayat_kelas`
 --
 ALTER TABLE `riwayat_kelas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tahun_pelajaran`
