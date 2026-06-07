@@ -23,6 +23,16 @@ ORDER BY total_poin DESC
 $result = mysqli_query($connect, $query);
 $data = [];
 
+// Fetch Aturan Poin
+$aturan_query = "SELECT * FROM aturan_poin ORDER BY min_poin ASC";
+$aturan_result = mysqli_query($connect, $aturan_query);
+$aturan_poin = [];
+if ($aturan_result) {
+    while ($row = mysqli_fetch_assoc($aturan_result)) {
+        $aturan_poin[] = $row;
+    }
+}
+
 while ($row = mysqli_fetch_assoc($result)) {
 
     $detail = mysqli_query($connect, "
@@ -304,6 +314,7 @@ return {
     filterKelas:'',
 
     dataSiswa: <?= json_encode($data) ?>,
+    aturanPoin: <?= json_encode($aturan_poin) ?>,
 
     exportPDF(){
         let url = 'export-pdf.php?';
@@ -347,36 +358,63 @@ return {
         });
     },
 
+    getAturan(p) {
+        if (!this.aturanPoin || this.aturanPoin.length === 0) return null;
+        for (let i = 0; i < this.aturanPoin.length; i++) {
+            let aturan = this.aturanPoin[i];
+            if (p >= aturan.min_poin && p <= aturan.max_poin) {
+                return aturan;
+            }
+        }
+        // If points exceed max of any rule, return the highest rule
+        return this.aturanPoin[this.aturanPoin.length - 1];
+    },
+
     pointBadge(p){
-        if(p < 25) return 'bg-emerald-100 text-emerald-600 ring-emerald-200';
-        if(p < 50) return 'bg-yellow-100 text-yellow-600 ring-yellow-200';
-        if(p < 75) return 'bg-orange-100 text-orange-600 ring-orange-200';
-        if(p < 100) return 'bg-rose-100 text-rose-600 ring-rose-200';
-        return 'bg-slate-200 text-slate-700 ring-slate-300';
+        let aturan = this.getAturan(p);
+        let warna = aturan ? aturan.warna.toLowerCase() : 'slate';
+        
+        switch(warna) {
+            case 'emerald': return 'bg-emerald-100 text-emerald-600 ring-emerald-200';
+            case 'yellow': return 'bg-yellow-100 text-yellow-600 ring-yellow-200';
+            case 'orange': return 'bg-orange-100 text-orange-600 ring-orange-200';
+            case 'rose': return 'bg-rose-100 text-rose-600 ring-rose-200';
+            case 'slate': return 'bg-slate-200 text-slate-700 ring-slate-300';
+            default: return 'bg-slate-200 text-slate-700 ring-slate-300';
+        }
     },
 
     statusLabel(p){
-        if(p < 25) return 'Aman';
-        if(p < 50) return 'Panggilan Siswa';
-        if(p < 75) return 'Panggilan Wali / Orang Tua';
-        if(p < 100) return 'Tidak Naik Kelas';
-        return 'Dropout';
+        let aturan = this.getAturan(p);
+        return aturan ? aturan.tindakan : 'Belum Diatur';
     },
 
     statusCircle(p){
-        if(p < 25) return 'bg-emerald-100 text-emerald-600';
-        if(p < 50) return 'bg-yellow-100 text-yellow-600';
-        if(p < 75) return 'bg-orange-100 text-orange-600';
-        if(p < 100) return 'bg-rose-100 text-rose-600';
-        return 'bg-slate-200 text-slate-700';
+        let aturan = this.getAturan(p);
+        let warna = aturan ? aturan.warna.toLowerCase() : 'slate';
+        
+        switch(warna) {
+            case 'emerald': return 'bg-emerald-100 text-emerald-600';
+            case 'yellow': return 'bg-yellow-100 text-yellow-600';
+            case 'orange': return 'bg-orange-100 text-orange-600';
+            case 'rose': return 'bg-rose-100 text-rose-600';
+            case 'slate': return 'bg-slate-200 text-slate-700';
+            default: return 'bg-slate-200 text-slate-700';
+        }
     },
 
     statusText(p){
-        if(p < 25) return 'text-emerald-600';
-        if(p < 50) return 'text-yellow-500';
-        if(p < 75) return 'text-orange-500';
-        if(p < 100) return 'text-rose-600';
-        return 'text-slate-900';
+        let aturan = this.getAturan(p);
+        let warna = aturan ? aturan.warna.toLowerCase() : 'slate';
+        
+        switch(warna) {
+            case 'emerald': return 'text-emerald-600';
+            case 'yellow': return 'text-yellow-500';
+            case 'orange': return 'text-orange-500';
+            case 'rose': return 'text-rose-600';
+            case 'slate': return 'text-slate-900';
+            default: return 'text-slate-900';
+        }
     }
 
 }

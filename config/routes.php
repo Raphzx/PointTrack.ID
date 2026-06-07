@@ -43,6 +43,13 @@ $pages = [
     "jenis_pelanggaran_edit_proses" => "pages/pelanggaran/jenis_pelanggaran_edit_proses.php",
     "jenis_pelanggaran_hapus" => "pages/pelanggaran/jenis_pelanggaran_hapus.php",
 
+    "aturan_poin" => "pages/aturan_poin/aturan_poin.php",
+    "aturan_poin_tambah" => "pages/aturan_poin/aturan_poin_tambah.php",
+    "aturan_poin_tambah_proses" => "pages/aturan_poin/aturan_poin_tambah_proses.php",
+    "aturan_poin_edit" => "pages/aturan_poin/aturan_poin_edit.php",
+    "aturan_poin_edit_proses" => "pages/aturan_poin/aturan_poin_edit_proses.php",
+    "aturan_poin_hapus" => "pages/aturan_poin/aturan_poin_hapus.php",
+
     "riwayat_siswa" => "pages/riwayat_siswa/riwayat_siswa.php",
     "riwayat_siswa_hapus" => "pages/riwayat_siswa/riwayat_siswa_hapus.php",
 

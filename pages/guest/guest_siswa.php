@@ -48,36 +48,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-function pointBadge($p){
-    if($p < 25)  return 'bg-emerald-100 text-emerald-600 ring-emerald-200';
-    if($p < 50)  return 'bg-yellow-100 text-yellow-600 ring-yellow-200';
-    if($p < 75)  return 'bg-orange-100 text-orange-600 ring-orange-200';
-    if($p < 100) return 'bg-rose-100 text-rose-600 ring-rose-200';
-    return 'bg-slate-200 text-slate-700 ring-slate-300';
+// Fetch Aturan Poin
+$aturan_query = "SELECT * FROM aturan_poin ORDER BY min_poin ASC";
+$aturan_result = mysqli_query($connect, $aturan_query);
+$aturan_poin = [];
+if ($aturan_result) {
+    while ($row = mysqli_fetch_assoc($aturan_result)) {
+        $aturan_poin[] = $row;
+    }
 }
 
-function statusLabel($p){
-    if($p < 25)  return 'Aman';
-    if($p < 50)  return 'Panggilan Siswa';
-    if($p < 75)  return 'Panggilan Wali / Orang Tua';
-    if($p < 100) return 'Tidak Naik Kelas';
-    return 'Dropout';
+function getAturan($p, $aturan_poin) {
+    if (empty($aturan_poin)) return null;
+    foreach ($aturan_poin as $aturan) {
+        if ($p >= $aturan['min_poin'] && $p <= $aturan['max_poin']) {
+            return $aturan;
+        }
+    }
+    return end($aturan_poin);
 }
 
-function statusCircle($p){
-    if($p < 25)  return 'bg-emerald-100 text-emerald-600';
-    if($p < 50)  return 'bg-yellow-100 text-yellow-600';
-    if($p < 75)  return 'bg-orange-100 text-orange-600';
-    if($p < 100) return 'bg-rose-100 text-rose-600';
-    return 'bg-slate-200 text-slate-700';
+function pointBadge($p, $aturan_poin){
+    $aturan = getAturan($p, $aturan_poin);
+    $warna = $aturan ? strtolower($aturan['warna']) : 'slate';
+    switch($warna) {
+        case 'emerald': return 'bg-emerald-100 text-emerald-600 ring-emerald-200';
+        case 'yellow': return 'bg-yellow-100 text-yellow-600 ring-yellow-200';
+        case 'orange': return 'bg-orange-100 text-orange-600 ring-orange-200';
+        case 'rose': return 'bg-rose-100 text-rose-600 ring-rose-200';
+        case 'slate': return 'bg-slate-200 text-slate-700 ring-slate-300';
+        default: return 'bg-slate-200 text-slate-700 ring-slate-300';
+    }
 }
 
-function statusText($p){
-    if($p < 25)  return 'text-emerald-600';
-    if($p < 50)  return 'text-yellow-500';
-    if($p < 75)  return 'text-orange-500';
-    if($p < 100) return 'text-rose-600';
-    return 'text-slate-900';
+function statusLabel($p, $aturan_poin){
+    $aturan = getAturan($p, $aturan_poin);
+    return $aturan ? $aturan['tindakan'] : 'Belum Diatur';
+}
+
+function statusCircle($p, $aturan_poin){
+    $aturan = getAturan($p, $aturan_poin);
+    $warna = $aturan ? strtolower($aturan['warna']) : 'slate';
+    switch($warna) {
+        case 'emerald': return 'bg-emerald-100 text-emerald-600';
+        case 'yellow': return 'bg-yellow-100 text-yellow-600';
+        case 'orange': return 'bg-orange-100 text-orange-600';
+        case 'rose': return 'bg-rose-100 text-rose-600';
+        case 'slate': return 'bg-slate-200 text-slate-700';
+        default: return 'bg-slate-200 text-slate-700';
+    }
+}
+
+function statusText($p, $aturan_poin){
+    $aturan = getAturan($p, $aturan_poin);
+    $warna = $aturan ? strtolower($aturan['warna']) : 'slate';
+    switch($warna) {
+        case 'emerald': return 'text-emerald-600';
+        case 'yellow': return 'text-yellow-500';
+        case 'orange': return 'text-orange-500';
+        case 'rose': return 'text-rose-600';
+        case 'slate': return 'text-slate-900';
+        default: return 'text-slate-900';
+    }
 }
 ?>
 
@@ -273,12 +305,12 @@ function statusText($p){
           <div class="flex items-center gap-4 text-right">
             <div>
               <p class="text-xs uppercase tracking-wide text-slate-400 font-bold">Total Poin</p>
-              <p class="text-lg md:text-xl font-black <?= statusText($totalPoin) ?>">
-                <?= statusLabel($totalPoin) ?>
+              <p class="text-lg md:text-xl font-black <?= statusText($totalPoin, $aturan_poin) ?>">
+                <?= htmlspecialchars(statusLabel($totalPoin, $aturan_poin)) ?>
               </p>
             </div>
 
-            <div class="<?= statusCircle($totalPoin) ?> w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center text-xl md:text-2xl font-black shadow-2xl ring-4 ring-white/50">
+            <div class="<?= statusCircle($totalPoin, $aturan_poin) ?> w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center text-xl md:text-2xl font-black shadow-2xl ring-4 ring-white/50">
               <?= $totalPoin ?>
             </div>
           </div>
@@ -291,14 +323,14 @@ function statusText($p){
           <div class="glass p-4 md:p-6 rounded-2xl hover:shadow-xl transition-all border-white/30 hover:-translate-y-1">
             <div class="flex justify-between items-start gap-4 flex-wrap">
               <div class="flex gap-4 items-start flex-1 min-w-[200px]">
-                <div class="w-3 h-3 rounded-full mt-2.5 <?= statusCircle($p['poin']) ?> shadow-lg"></div>
+                <div class="w-3 h-3 rounded-full mt-2.5 <?= statusCircle($p['poin'], $aturan_poin) ?> shadow-lg"></div>
                 <div>
                   <p class="font-black text-slate-800 text-base md:text-lg"><?= htmlspecialchars($p['nama_pelanggaran']) ?></p>
                   <p class="text-xs md:text-sm text-slate-500 font-semibold mt-1"><?= date('d M Y', strtotime($p['tanggal'])) ?></p>
                 </div>
               </div>
 
-              <span class="<?= pointBadge($p['poin']) ?> inline-flex items-center px-3 md:px-5 py-1.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black ring-2 ring-inset shadow-lg">
+              <span class="<?= pointBadge($p['poin'], $aturan_poin) ?> inline-flex items-center px-3 md:px-5 py-1.5 md:py-2.5 rounded-xl md:rounded-2xl text-xs md:text-sm font-black ring-2 ring-inset shadow-lg">
                 <?= $p['poin'] ?> Poin
               </span>
             </div>

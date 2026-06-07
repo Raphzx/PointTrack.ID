@@ -177,6 +177,21 @@ $role = $_SESSION['user_role'] ?? 'guru';
           <span x-show="open">Kelola Tahun Ajaran</span>
         </a>
         <a
+          href="aturan_poin"
+          class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('aturan_poin',$page) ?>"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          </svg>
+          <span x-show="open">Aturan Poin</span>
+        </a>
+        <a
   href="riwayat_kelas"
   class="flex items-center gap-3 px-3 py-2 rounded transition <?= active('riwayat_kelas', $page) ?>"
 >
