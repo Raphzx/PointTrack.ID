@@ -1,7 +1,6 @@
 <?php 
 include __DIR__ . '/../../config/connection.php';
 
-// Auto create table if not exists
 $query_create = "
 CREATE TABLE IF NOT EXISTS aturan_poin (
     id INT AUTO_INCREMENT PRIMARY KEY,
